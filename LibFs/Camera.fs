@@ -4,7 +4,7 @@
 public static class CameraModule
 {
     // Greatest Common Divisor (GCD)
-    // int->int -> int   // Type annotation comments help us in C# as well.
+    // int->int -> int
     public static int Gcd(int a, int b)
     {
         if (b == 0)
@@ -13,7 +13,7 @@ public static class CameraModule
         }
         return Gcd(b, a % b);
     }
-    
+
     // int->int -> (int,int)
     public static (int,int) GetBaseRatio(int width, int height)
     {
@@ -25,18 +25,12 @@ public static class CameraModule
 module CameraModule
 
 // Greatest Common Divisor (GCD)
-let rec gcd :
-        int32->int32->int32 =
-    fun a b ->
-        match b with
-        | 0 -> a
-        | _ -> gcd b (a % b)
+let rec gcd a b =
+    match b with
+    | 0 -> a
+    | _ -> gcd b (a % b)
 
 // camelCase is the convention in F#
-let getBaseRatio :
-        int32->
-        int32->
-        int32*int32 =
-    fun width height ->
-        let div = gcd width height
-        width / div, height /div
+let getBaseRatio width height =
+    let div = gcd width height
+    width / div, height / div
